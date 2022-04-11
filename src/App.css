@@ -50,6 +50,16 @@ h2 {
     /* align-items: center; */
 }
 
+@media screen and (max-width: 500px) {
+    .App {
+        height: auto !important;
+    }
+
+    .game {
+        height: auto !important;
+    }
+}
+
 .w {
     padding: 10px 0;
     height: 100%;
