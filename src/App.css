@@ -47,6 +47,7 @@ h2 {
     flex-direction: column;
     
     justify-content: space-between;
+    /* align-items: center; */
 }
 
 .w {
@@ -94,7 +95,7 @@ h2 {
 }
 
 .inputrow {
-    width: 100%;
+    width: 95%;
     display: flex;
     margin: 5px;
 }

@@ -3,7 +3,6 @@ import {Cards} from '../List/CardsList'
 import {Charactor} from '../List/Charactor'
 import Toaster from './Toaster'
 
-
 import '../App.css'
 
 export default function Guess({onEnter, isGameover}) {
@@ -49,6 +48,10 @@ export default function Guess({onEnter, isGameover}) {
     onEnter({});
   }
 
+  const test = (e) => {
+    e.target.size = 4;
+  }
+
   return (
     <>
       {isToasterOpen?<Toaster String={'Please select correctly'}/>:<></>}
@@ -57,7 +60,7 @@ export default function Guess({onEnter, isGameover}) {
           <select defaultValue={currentChar} onChange={onChangeChar}>
             <option value={0} disabled>----</option>
             {
-              Charactor?Charactor.map(char => <option key={char.id} value={char.id}>{char.Name}</option>):''
+              Charactor?Charactor.map(char => <option key={char.id} value={char.id}>{char.Name}</option>):<></>
             }
           </select>
           <select onChange={onChangeCard} defaultValue={0}>

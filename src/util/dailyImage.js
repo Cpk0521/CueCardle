@@ -80,7 +80,6 @@ export const isCorrect = (currguses) => {
 export const clipImage = (canvasRef, times) => {
     
     const canvas = canvasRef.current;
-    console.log(canvas);
     const ctx = canvas.getContext('2d');
 
     // let {CardImage, sPx, sPy} =  createImage();
