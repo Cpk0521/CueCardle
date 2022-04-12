@@ -33,10 +33,6 @@ nav h1 {
     text-align: center;
 }
 
-h2 {
-    margin: 15px;
-}
-
 .game {
     width: 100%;
     max-width: 500px;
@@ -212,6 +208,21 @@ h2 {
     justify-content: center;
 }
 
+.content h2{
+    margin: 2px;
+}
+
+.content-countdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.content-countdown > span {
+    margin-right: 5px;
+}
+
 @keyframes SlideIn {
     0% {
         transform: translateY(30px);
@@ -239,15 +250,17 @@ h2 {
 }
 
 .cardname {
-    padding: 15px 0;
+    padding: 10px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid #ececec;
 }
 
 .btnlist {
+    padding: 10px 0;
     width: 95%;
     display: grid;
     grid-template-columns: 1fr 1fr;

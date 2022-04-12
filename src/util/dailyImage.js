@@ -6,7 +6,7 @@ export const Today = () => {
     const timezone = 'Asia/Tokyo';
     const now = DateTime.now().setZone(timezone);
 
-    return {year:now.year, month:now.month, day:now.day}
+    return {datetime:now, year:now.year, month:now.month, day:now.day}
 }
 
 export const isToday = () => {
@@ -22,19 +22,20 @@ export const getIndexByDay = () => {
     // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const DayOfms = 86400000;
 
-    const now = Today();
+    const now = Today().datetime;
 
     const start = DateTime.utc(2022, 4, 11);
     const today = DateTime.utc(now.year, now.month, now.day);
+    const nextday = today.plus({days: 1}).minus({minutes: now.offset}).valueOf();
 
     const index = Math.floor((today.valueOf() - start.valueOf()) / DayOfms);
 
     const image = List[index % List.length];
 
-    return {Listindex:index, CardData:image, today:now};
+    return {Listindex:index, CardData:image, today:now, nextday:nextday};
 }
 
-export const {Listindex, CardData, today} = getIndexByDay();
+export const {Listindex, CardData, today, nextday} = getIndexByDay();
 
 export const createImage = () => {
 
@@ -89,7 +90,7 @@ export const clipImage = (canvasRef, times) => {
         let size = CardImage.height * (.1 + (.07*times));
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(CardImage, sPx, sPy, size, size, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(CardImage, sPx, sPy, size, size, 0, 0, canvas.width, canvas.width);
     });
 
     // let nPx = sPx-(size/2)<=0?0:sPx+size>CardImage.width?CardImage.width-size:sPx-(size/2);

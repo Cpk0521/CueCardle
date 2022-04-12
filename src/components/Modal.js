@@ -1,6 +1,9 @@
 import React,{useState} from 'react'
 
-import {CardData} from '../util/dailyImage'
+import { DateTime } from 'luxon'
+import Countdown from 'react-countdown';
+
+import {CardData, nextday, Listindex} from '../util/dailyImage'
 import Toaster from './Toaster'
 
 export default function Modal({closeModal, OnTextShare, OnTweetShare}) {
@@ -15,12 +18,19 @@ export default function Modal({closeModal, OnTextShare, OnTweetShare}) {
     }, 1200);
   }
 
+  const now = DateTime.now().setZone('Asia/Tokyo');
+  let title = now.setLocale('ja-JP').toLocaleString(DateTime.DATE_FULL);
+
   return (
     <>
       {isToasterOpen?<Toaster String={'Copied to clipboard'}/>:<></>}
       <div className={`overlay show`}>
           <div className="content">
-            <h2>result</h2>
+              <h2>{`${title} (#${Listindex + 1})`}</h2>
+            <div className='content-countdown'>
+              <span>The Next in </span>
+              <Countdown date={nextday} daysInHours={true}/>
+            </div>
             <img src={`https://cpk0521.github.io/CUE-Cards-Viewer/Cards/${CardData.cardId}/Card_${CardData.cardId}_${CardData.Blooming?'2':'1'}_b.png`}></img>
             <div className='cardname'>
               <span>{CardData.heroine}</span>
