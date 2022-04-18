@@ -7,7 +7,7 @@ import '../App.css'
 
 export default function Guess({onEnter, isGameover}) {
 
-  const [currentSakura, setCurrentSakura] = useState(false);
+  // const [currentSakura, setCurrentSakura] = useState(false);
   const [currentChar, setCurrentChar] = useState(0);
   const [currentCard, setCurrentCard] = useState(0);
 
@@ -23,9 +23,9 @@ export default function Guess({onEnter, isGameover}) {
     setCurrentCard(e.target.value);
   }
 
-  const onSakura = ()=>{
-    setCurrentSakura(!currentSakura);
-  }
+  // const onSakura = ()=>{
+  //   setCurrentSakura(!currentSakura);
+  // }
 
   useEffect(()=>{
     let tilte = Cards.filter(x => x.heroineId == currentChar)
@@ -35,7 +35,8 @@ export default function Guess({onEnter, isGameover}) {
 
   const onsubmit = () => {
     if((currentChar != 0 && currentCard != 0 )|| isGameover){
-      onEnter({Charid:currentChar, Cardid:currentCard, Blooming:currentSakura});
+      // onEnter({Charid:currentChar, Cardid:currentCard, Blooming:currentSakura});
+      onEnter({Charid:currentChar, Cardid:currentCard});
     }
     else
       SetToasterOpen(true);
@@ -69,7 +70,7 @@ export default function Guess({onEnter, isGameover}) {
               chooseList.map(item => <option key={item.cardId} value={item.cardId}>{item.alias == '0'?'【】':item.alias}</option>)
             }
           </select>
-          <button onClick={onSakura} className={currentSakura?'Sakura':''}>開花</button>
+          {/* <button onClick={onSakura} className={currentSakura?'Sakura':''}>開花</button> */}
         </div>
         <div className='inputrow submitlist'>
           <button onClick={onSkip}>Skip(zoom+)</button>

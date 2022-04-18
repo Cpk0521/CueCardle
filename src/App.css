@@ -99,21 +99,23 @@ nav h1 {
 
 .selectlist {
     display: grid!important;
-    grid-template-columns: 2fr 3fr 1fr;
+    /* grid-template-columns: 2fr 3fr 1fr; */
+    grid-template-columns: 2.5fr 3.5fr;
     grid-gap: 5px;
 }
 
-.selectlist > button {
+/* .selectlist > button {
     background-color: #fff;
     border: 1px solid #2b75ff;
     border-radius: 5px;
     color: #000;
     padding: 5px;
     font-size: medium;
-}
+} */
 
 .selectlist > select {
     border-radius: 5px;
+    padding: 5px 0;
     width: 100%;
     font-size: medium;
     border: 1px solid rgb(43 117 255);

@@ -73,8 +73,10 @@ export const createImage = () => {
 export const isCorrect = (currguses) => {
     
     let skip = currguses.Skip == true;
-    let correct = (currguses.Cardid == CardData.cardId) && (CardData.cardId>9000000?true:currguses.Blooming == CardData.Blooming);
-    let almost = !correct && (currguses.Charid == CardData.heroineId || (CardData.cardId>9000000?true:currguses.Blooming == CardData.Blooming));
+    // let correct = (currguses.Cardid == CardData.cardId) && (CardData.cardId>9000000?true:currguses.Blooming == CardData.Blooming);
+    // let almost = !correct && (currguses.Charid == CardData.heroineId || (CardData.cardId>9000000?true:currguses.Blooming == CardData.Blooming));
+    let correct = (currguses.Cardid == CardData.cardId);
+    let almost = !correct && (currguses.Charid == CardData.heroineId);
 
     return {correct:correct, almost:almost, skip:skip}
 }
