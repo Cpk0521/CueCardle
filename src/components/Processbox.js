@@ -3,7 +3,7 @@
 export default function Processbox({Pos, guesses}) {
 
     let process = guesses[Pos-1];
-    let styleid = process?process.correct?'correct':process.almost?'almost':'error':'';
+    let styleid = process?process.skip?'skip':process.correct?'correct':process.almost?'almost':'error':'';
 
     return (
         <div className='square' id={styleid}></div>

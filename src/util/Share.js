@@ -2,8 +2,8 @@ import {Listindex} from './dailyImage'
 
 export const generateEmojiTile = (guesses) => {
     let tiltes = guesses.map((guess)=>{
-        let {correct, almost} = guess;
-        let Emoji = correct?'🟩':almost?'🟨':'⬜';
+        let {correct, almost, skip} = guess;
+        let Emoji = skip?'🔳':correct?'🟩':almost?'🟨':'⬜';
         return Emoji;
     }).join('');
 
@@ -20,5 +20,5 @@ export const TweetShare = (guesses, isWon, isLost) => {
 }
 
 //CUE!Cardle #index x/6
-//⬜⬜⬜⬜⬜⬜
+//🔲🔳⬜🟨🟩
 //github link

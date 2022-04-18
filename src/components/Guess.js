@@ -45,7 +45,7 @@ export default function Guess({onEnter, isGameover}) {
   }
 
   const onSkip = () => {
-    onEnter({});
+    onEnter({Skip:true});
   }
 
   const test = (e) => {
