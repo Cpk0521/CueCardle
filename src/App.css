@@ -19,11 +19,16 @@ body {
 
 nav {
     height: 50px;
-    width: 100%;
+    /* width: 100%; */
     margin: auto;
     border-bottom: 1px solid #d3d6da;
-    display: grid;
-    place-items: center;
+    /* display: grid; */
+    /* place-items: center; */
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 nav h1 {
@@ -31,6 +36,19 @@ nav h1 {
     color: #000;
     font-size: 35px;
     text-align: center;
+}
+
+.nav-left, .nav-right{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50px;
+}
+
+.nav-left > a {
+    display: flex;
 }
 
 .game {
@@ -354,6 +372,14 @@ nav h1 {
 @media screen and (max-width: 500px) {
     .App {
         height: auto !important;
+    }
+
+    nav {
+        padding: 0 5px;
+    }
+
+    nav h1 {
+        font-size: 20px;
     }
 
     .game {
