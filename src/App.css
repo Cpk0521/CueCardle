@@ -47,8 +47,21 @@ nav h1 {
     width: 50px;
 }
 
+.nav-right {
+    justify-content: flex-end!important;
+}
+
+
 .nav-left > a {
     display: flex;
+}
+
+.nav-right > button {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border: 0;
+    background: transparent;
 }
 
 .game {
@@ -369,6 +382,75 @@ nav h1 {
     }
 } */
 
+
+.statistic-container {
+    /* height: 50px;
+    background: #8b8b8b; */
+    margin: 15px 0;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.stat {
+    /* flex: 1; */
+    text-align: center;
+}
+
+.stat > h4 {
+    margin: 2px;
+}
+
+.graph-container {
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+    border-top: 1px solid #ececec;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.graph-container > span {
+    margin: 10px 0;
+    font-size: large;
+}
+
+.guess-distribution {
+    width: 80%;
+}
+
+.graph {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 4px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.graph-bar {
+    width: 100%;
+    height: 100%;
+    padding-left: 4px;
+}
+
+.bar {
+    display: flex;
+    position: relative;
+    height: 100%;
+    background: #787c7e;
+    justify-content: flex-end;
+    width: 20px;
+}
+
+.bar-num {
+    padding-right: 5px;
+    color: ivory;
+}
+
+
 @media screen and (max-width: 500px) {
     .App {
         height: auto !important;
@@ -389,5 +471,9 @@ nav h1 {
     .content{
         text-align: center;
         padding-top: 50px;
+    }
+
+    .statistic-container{
+        width: auto;
     }
 }
