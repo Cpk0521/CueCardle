@@ -42,8 +42,11 @@ function App() {
   const [stats, setStats] = useState(loadStatistics());
 
   useEffect(()=>{
-    clipImage(canvasRef, guesses.length);
     Hello();
+  },[])
+
+  useEffect(()=>{
+    clipImage(canvasRef, guesses.length);
   },[canvasRef, guesses])
 
   useEffect(()=>{
