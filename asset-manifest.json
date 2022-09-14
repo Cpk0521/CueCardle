@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/CueCardle/static/css/main.62de103a.css",
-    "main.js": "/CueCardle/static/js/main.4b16fdec.js",
+    "main.js": "/CueCardle/static/js/main.3b432e0c.js",
     "index.html": "/CueCardle/index.html",
     "main.62de103a.css.map": "/CueCardle/static/css/main.62de103a.css.map",
-    "main.4b16fdec.js.map": "/CueCardle/static/js/main.4b16fdec.js.map"
+    "main.3b432e0c.js.map": "/CueCardle/static/js/main.3b432e0c.js.map"
   },
   "entrypoints": [
     "static/css/main.62de103a.css",
-    "static/js/main.4b16fdec.js"
+    "static/js/main.3b432e0c.js"
   ]
 }
