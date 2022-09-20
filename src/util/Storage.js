@@ -1,6 +1,7 @@
 const statusKey = 'gameStatus';
 const inheritedGameStatKey = 'statistics';
 const DateKey = 'Date';
+const FirstTimeKey = 'FirstTime';
 
 export const setStatusToLocal = (guesses, isGameover) => {
     localStorage.setItem(statusKey, JSON.stringify({guesses:guesses, isGameover:isGameover}));
@@ -32,6 +33,16 @@ export const getDateFromLocal = () => {
     const date = localStorage.getItem(DateKey);
     return date?JSON.parse(date):null;
 }
+
+export const setFirst = (bool) => {
+    localStorage.setItem(FirstTimeKey, JSON.stringify(bool));
+}
+
+export const getFirst = ()=>{
+    let isFirst = localStorage.getItem(FirstTimeKey)
+    return JSON.parse(isFirst)??true
+}
+
 
 export const ClearAllLocal = () => {
     localStorage.clear();

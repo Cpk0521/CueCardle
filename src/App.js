@@ -5,11 +5,12 @@ import Board from "./components/Board";
 import Guess from "./components/Guess";
 import Modal from './components/Modal'
 import StatsModal from './components/StatsModal'
+import TechModal from "./components/TechModal";
 
 import {clipImage, isCorrect, isToday, Today} from './util/dailyImage'
 import Hello from './util/Hello'
 import {CopyToClipBoard, TweetShare} from './util/Share'
-import {setStatusToLocal, getStatusFromLocal, setTodayToLocal} from './util/Storage'
+import {setStatusToLocal, getStatusFromLocal, setTodayToLocal, setFirst, getFirst} from './util/Storage'
 import {addStatistics, loadStatistics} from './util/Statistics'
 
 import './App.css'
@@ -21,6 +22,7 @@ function App() {
   const [isLost, setLost] = useState(false);
   const [isModalOpen, SetModalOpen] = useState(false);
   const [isStatsModalOpen, setStatsModalOpen] = useState(false);
+  const [isTechModalOpen, setTechModalOpen] = useState(false);
 
   const [guesses, setGuesses] = useState(()=>{
 
@@ -40,6 +42,16 @@ function App() {
   });
   
   const [stats, setStats] = useState(loadStatistics());
+  const [isFirst, setIsFirst] = useState(()=>{
+
+    let bool = getFirst()
+
+    if(bool){
+      setTechModalOpen(true)
+    }
+
+    return bool
+  });
 
   useEffect(()=>{
     Hello();
@@ -89,6 +101,14 @@ function App() {
     setStatsModalOpen(!isStatsModalOpen);
   }
 
+  const switchTechModal = () => {
+    setTechModalOpen(!isTechModalOpen)
+
+    if(isFirst){
+      setFirst(false)
+    }
+  }
+
   const OnTextShare = () => {
     CopyToClipBoard(guesses, isWon, isLost);
   }
@@ -99,6 +119,7 @@ function App() {
 
   return (
     <>
+      {isTechModalOpen?<TechModal switchTechModal={switchTechModal}/>:<></>}
       {isModalOpen?<Modal closeModal={closeModal} OnTextShare={OnTextShare} OnTweetShare={OnTweetShare}/>:<></>}
       {isStatsModalOpen?<StatsModal switchStatsModal={switchStatsModal} stats={stats} />:<></>}
       <div className="App">
@@ -112,6 +133,11 @@ function App() {
           </div>
           <h1>CUE!Cardle</h1>
           <div className="nav-right">
+          <button onClick={switchTechModal}>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            </button>
             <button onClick={switchStatsModal}>
               <svg xmlns="http://www.w3.org/2000/svg" width="26" viewBox="0 0 16 16">
                 <path fill="var(#000)" d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>

@@ -31,7 +31,7 @@ export default function Modal({closeModal, OnTextShare, OnTweetShare}) {
               <span>The Next in </span>
               <Countdown date={nextday} daysInHours={true}/>
             </div>
-            <img src={`https://cpk0521.github.io/CUE-Cards-Viewer/Cards/${CardData.cardId}/Card_${CardData.cardId}_${CardData.Blooming?'2':'1'}_b.png`}></img>
+            <img src={`https://cpk0521.github.io/CUECardsViewer/Cards/${CardData.cardId}/Card_${CardData.cardId}_${CardData.Blooming?'2':'1'}_b.png`}></img>
             <div className='cardname'>
               <span>{CardData.heroine}</span>
               <span>{CardData.alias}</span>
