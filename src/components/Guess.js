@@ -73,7 +73,7 @@ export default function Guess({onEnter, isGameover}) {
           {/* <button onClick={onSakura} className={currentSakura?'Sakura':''}>開花</button> */}
         </div>
         <div className='inputrow submitlist'>
-          <button onClick={onSkip}>Skip(zoom+)</button>
+          <button onClick={onSkip}>Skip</button>
           <button onClick={onsubmit}>Submit</button>
         </div>
       </div>
