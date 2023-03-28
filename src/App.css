@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap');
 
 * {
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .App {
     text-align: center;
     background-color: #FFF;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     color: #000;
 }
@@ -19,27 +19,22 @@ body {
 
 nav {
     height: 50px;
-    /* width: 100%; */
     margin: auto;
     border-bottom: 1px solid #d3d6da;
-    /* display: grid; */
-    /* place-items: center; */
     padding: 0 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-
-nav h1 {
+nav > h1 {
     margin: auto;
     color: #000;
     font-size: 35px;
     text-align: center;
 }
 
-.nav-left, .nav-right{
+.nav-left, .nav-right {
     display: flex;
     margin: 0;
     padding: 0;
@@ -53,12 +48,11 @@ nav h1 {
     justify-content: flex-end!important;
 }
 
-
-.nav-left > a {
+.nav-left > a , .nav-right > a {
     display: flex;
 }
 
-.nav-right > button {
+.nav-left > button, .nav-right > button {
     padding: 0;
     margin: 0;
     display: flex;
@@ -71,31 +65,30 @@ nav h1 {
     width: 100%;
     max-width: 500px;
     height: calc(100% - 55px);
-
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    
-    justify-content: space-between;
-    /* align-items: center; */
-}
-
-.w {
-    padding: 10px 0;
-    height: 100%;
-}
-
-.ImageBox {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr;
     align-items: center;
-    /* flex-grow: 1; */
-    overflow: hidden;
-    /* background: #d3d6da; */
-    height: 350px;
 }
 
-.Board {
+.imageContent {
+    padding: 10px;
+}
+
+.imageBox {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.imageCanvas {
+    max-width: 100%; 
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.resultBoard {
     padding: 10px 20px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -109,14 +102,12 @@ nav h1 {
     align-items: center;
     flex-direction: column;
     padding: 15px 0;
-    /* background: #2b75ff; */
 }
 
 .square {
-    border-radius: 35%;
+    border-radius: 15%;
     border: 2px solid #d3d6da;
     width: 80%;
-    /* height: 30px; */
     box-sizing: border-box;
     display: inline-flex;
 }
@@ -134,19 +125,9 @@ nav h1 {
 
 .selectlist {
     display: grid!important;
-    /* grid-template-columns: 2fr 3fr 1fr; */
     grid-template-columns: 2.5fr 3.5fr;
     grid-gap: 5px;
 }
-
-/* .selectlist > button {
-    background-color: #fff;
-    border: 1px solid #2b75ff;
-    border-radius: 5px;
-    color: #000;
-    padding: 5px;
-    font-size: medium;
-} */
 
 .selectlist > select {
     border-radius: 5px;
@@ -187,22 +168,22 @@ nav h1 {
 #skip {
     outline: 1px solid #d3d6da!important;
     border: 5px #f6f7f8 solid!important;
-    background: #8b8b8b!important;
+    background: #aaaaaa!important;
 }
 
 #correct {
     border:#6aaa64;
-    background: #6aaa64!important;
+    background: #97e390!important;
 }
 
 #almost {
     border:#ffd93a;
-    background: #ffd93a!important;
+    background: #fcdf67!important;
 }
 
 #error {
     border: #c0c0c0;
-    background: #c0c0c0!important;
+    background: #cccccc!important;
 }
 
 .overlay {
@@ -238,8 +219,8 @@ nav h1 {
     padding: 16px;
     box-sizing: border-box;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center;    
+    justify-content: flex-start
 }
 
 .content h2{
@@ -367,30 +348,8 @@ nav h1 {
 
     animation: SlideIn 200ms;
 }
-/* 
-.toaster-content.in {
-    animation: SlideIn 200ms;
-}
-
-.toaster-content.out {
-    animation: SlideOut 200ms;
-}
-
-@keyframes SlideOut {
-    0% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-} */
-
 
 .statistic-container {
-    /* height: 50px;
-    background: #8b8b8b; */
     margin: 15px 0;
     width: 80%;
     display: grid;
@@ -432,7 +391,6 @@ nav h1 {
 }
 
 .stat {
-    /* flex: 1; */
     text-align: center;
 }
 
@@ -496,7 +454,7 @@ nav h1 {
     }
 
     nav {
-        padding: 0 5px;
+        padding: 0 10px;
     }
 
     nav h1 {
@@ -505,6 +463,7 @@ nav h1 {
 
     .game {
         height: auto !important;
+        justify-content: normal!important;
     }
 
     .content{

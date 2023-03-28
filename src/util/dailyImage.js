@@ -39,19 +39,6 @@ export const {Listindex, CardData, today, nextday} = getIndexByDay();
 
 export const createImage = () => {
 
-    // const img = new Image();
-    // img.src = `https://cpk0521.github.io/CUECardsViewer/Cards/${CardData.cardId}/Card_${CardData.cardId}_${CardData.Blooming?'2':'1'}_b.png`;
-
-    // console.log(img.src);
-
-    // img.onload = () => {
-    //     const sPx = (today.day * today.month * today.year) % (img.width - img.height * .52);
-    //     const sPy = (today.day * today.year) % (img.height - img.height * .52);
-    //   
-    // }
-
-    // return {CardImage:img, sPx:sPx, sPy:sPy}
-
     return new Promise((resolve, reject) => {
         let img = new Image();
         img.src = `https://cpk0521.github.io/CUECardsViewer/Cards/${CardData.cardId}/Card_${CardData.cardId}_${CardData.Blooming?'2':'1'}_b.png`;
@@ -65,9 +52,6 @@ export const createImage = () => {
 
         img.onerror = (e) => reject(e);
     })
-
-    // const sPx = (today.day * today.month * today.year)% img.width;
-    // const sPy = (today.day * today.year) % img.height;
 }
 
 export const isCorrect = (currguses) => {
@@ -86,7 +70,6 @@ export const clipImage = (canvasRef, times) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
-    // let {CardImage, sPx, sPy} =  createImage();
     createImage().then((res) => {
         const {CardImage, sPx, sPy} = res;
 
@@ -95,13 +78,9 @@ export const clipImage = (canvasRef, times) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(CardImage, sPx, sPy, size, size, 0, 0, canvas.width, canvas.width);
     });
+}
 
-    // let nPx = sPx-(size/2)<=0?0:sPx+size>CardImage.width?CardImage.width-size:sPx-(size/2);
-    // let nPy = sPy-(size/2)<=0?0:sPy+size>CardImage.height?CardImage.height-size:sPy-(size/2);
 
-    // CardImage.onload = () => {
-    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //     ctx.drawImage(CardImage, sPx, sPy, size, size, 0, 0, canvas.width, canvas.height);
-    // };  
+export const getClipType = () => {
 
 }

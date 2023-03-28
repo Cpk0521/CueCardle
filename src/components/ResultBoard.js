@@ -1,10 +1,10 @@
 import React from 'react'
 import Processbox from './Processbox'
 
-export default function Board({guesses}) {
+export default function ResultBoard({guesses}) {
 
   return (
-    <div className='Board'>
+    <div className='resultBoard'>
       <Processbox Pos={1} guesses={guesses}/>
       <Processbox Pos={2} guesses={guesses}/>
       <Processbox Pos={3} guesses={guesses}/>
