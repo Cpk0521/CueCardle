@@ -78,6 +78,7 @@ nav > h1 {
 .imageBox {
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
     min-height: 300px;
 }
@@ -168,7 +169,7 @@ nav > h1 {
 #skip {
     outline: 1px solid #d3d6da!important;
     border: 5px #f6f7f8 solid!important;
-    background: #aaaaaa!important;
+    background: #cfcfcf!important;
 }
 
 #correct {
