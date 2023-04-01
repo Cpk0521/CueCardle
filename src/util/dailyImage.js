@@ -30,7 +30,6 @@ export const getIndexByDay = () => {
 
     const index = Math.floor((today.valueOf() - start.valueOf()) / DayOfms);
 
-    console.log(`${index} / ${List.length}`)
     const image = List[index % List.length];
 
     return {Listindex:index, CardData:image, today:now, nextday:nextday};
@@ -72,7 +71,7 @@ export const clipImage = async (canvasRef, times) => {
 
     let clipsize = clipStyle.clipSize
     let setid = (today.day * today.month * today.year) % clipStyle.area.length
-    let area = clipStyle.area[3]
+    let area = clipStyle.area[setid]
     let max = times >= area.length? area.length : times + 1
 
     for (let index = 0; index < max; index++) {
