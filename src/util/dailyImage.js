@@ -30,6 +30,7 @@ export const getIndexByDay = () => {
 
     const index = Math.floor((today.valueOf() - start.valueOf()) / DayOfms);
 
+    console.log(List.length)
     const image = List[index % List.length];
 
     return {Listindex:index, CardData:image, today:now, nextday:nextday};
@@ -56,28 +57,34 @@ export const isCorrect = (currguses) => {
     return {correct:correct, almost:almost, skip:skip}
 }
 
+export const initCanvas = async (canvasRef) => {
+    const allcanvas = canvasRef.current;
+    allcanvas.forEach((canvas)=>{
+        let ctx = canvas.getContext('2d');
+        ctx.fillStyle = "#cccccc";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    })
+}
+
 export const clipImage = async (canvasRef, times) => {
     
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    const image = await getDailyImage()
-
     // season 2
-    canvas.width = 1334;
-    canvas.height = 750;
-
-    ctx.fillStyle = "#cccccc";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+    const allcanvas = canvasRef.current;
+    const image = await getDailyImage()
     let clipsize = clipStyle.clipSize
     let setid = (today.day * today.month * today.year) % clipStyle.area.length
     let area = clipStyle.area[setid]
-    let max = times >= area.length? area.length : times + 1
 
-    for (let index = 0; index < max; index++) {
-        let {x, y} = area[index]
-        ctx.drawImage(image, x, y, clipsize, clipsize, x, y, clipsize, clipsize);
-    }
+    allcanvas.forEach((canvas, index) => {
+        let ctx = canvas.getContext('2d');
+        ctx.fillStyle = "#cccccc";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if(index <= times){
+            let {x, y} = area[index]
+            ctx.drawImage(image, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
+        }
+    });
 
     // season 1
     // let clipsize = 300
@@ -88,7 +95,6 @@ export const clipImage = async (canvasRef, times) => {
     // let sPy = (today.day * today.year) % (image.height - image.height * .52);
 
     // let size = image.height * (.1 + (.07*times));
-
 
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
     // ctx.drawImage(image, sPx, sPy, size, size, 0, 0, canvas.width, canvas.width);

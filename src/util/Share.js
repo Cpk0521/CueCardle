@@ -11,11 +11,11 @@ export const generateEmojiTile = (guesses) => {
 }
 
 export const CopyToClipBoard = (guesses, isWon, isLost) => {
-    navigator.clipboard.writeText(`CUE!Cardle Season 2 #${Listindex + 1} ${isWon?guesses.length:isLost?'X':''}/6\n${generateEmojiTile(guesses)}\nhttps://cpk0521.github.io/CueCardle/`);
+    navigator.clipboard.writeText(`CUE!Cardle S2 #${Listindex + 1} ${isWon?guesses.length:isLost?'X':''}/6\n${generateEmojiTile(guesses)}\nhttps://cpk0521.github.io/CueCardle/`);
 }
 
 export const TweetShare = (guesses, isWon, isLost) => {
-    let ShareText = `CUE!Cardle%20Season%202%20%23${Listindex + 1}%20${isWon?guesses.length:isLost?'X':''}/6%0a${generateEmojiTile(guesses)}%0a&hashtags=キュー,新人声優育成中,写真が下手ですみません&url=https://cpk0521.github.io/CueCardle/%0a`
+    let ShareText = `CUE!Cardle%20S2%20%23${Listindex + 1}%20${isWon?guesses.length:isLost?'X':''}/6%0a${generateEmojiTile(guesses)}%0a&hashtags=キュー,新人声優育成中,写真が下手ですみません&url=https://cpk0521.github.io/CueCardle/%0a`
     window.open(`https://twitter.com/intent/tweet?text=${ShareText}`, "_blank")
 }
 

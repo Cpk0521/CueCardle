@@ -76,11 +76,15 @@ nav > h1 {
 }
 
 .imageBox {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 8px;
     overflow: hidden;
-    min-height: 300px;
+    /* min-height: 300px; */
 }
 
 .imageCanvas {
@@ -474,5 +478,11 @@ nav > h1 {
 
     .statistic-container{
         width: auto;
+    }
+
+    .imageBox{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        margin: 8px 16px ;
     }
 }

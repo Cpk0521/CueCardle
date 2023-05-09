@@ -5,29 +5,29 @@ export default function TechModal({switchTechModal}) {
     <>
         <div className={`overlay show`}>
                 <div className="content">
-                    <h2>How To Play</h2>
+                    <h2>遊び方</h2>
                     <span>©Liber Entertainment Inc.</span>
                     <div className="Tech-container">
-                        <p>Look at the Image, then guess the correct charactor and Card title of the day in 6 tries.</p>
-                        <p>Skipped or incorrect attempts will zoom more of the Image.</p>
-                        <p>Answer in as few tries as possible and share your tries!</p>
+                        <p>画像を観察して、その日のキャラクターとカード名を6回の試みの中で当てください。</p>
+                        <p>スキップと間違った答え、画像が1つ追加されます。</p>
+                        <p>ぜひ答えてみて、あなたの回答をシェアてしましょう。</p>
                     </div>
                     <div className="square-container">
                         <div className="square-Tech-container">
                             <div className="square" id="skip"></div>
-                            <p>Skipped</p>
+                            <p>スキップ</p>
                         </div>
                         <div className="square-Tech-container">
                             <div className="square" id="error"></div>
-                            <p>Charactor and Card title both not correct</p>
+                            <p>キャラクターとカードタイトルの両方でも不正解です</p>
                         </div>
                         <div className="square-Tech-container">
                             <div className="square" id="almost"></div>
-                            <p>Charactor is correct but Card title is wrong </p>
+                            <p>キャラクターは正解ですが、カードタイトルは不正解です</p>
                         </div>
                         <div className="square-Tech-container">
                             <div className="square" id="correct"></div>
-                            <p>Correct</p>
+                            <p>正解</p>
                         </div>
                     </div>
                     <button className="closebtn" onClick={switchTechModal}>

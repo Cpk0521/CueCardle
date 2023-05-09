@@ -17,7 +17,7 @@ import './App.css'
 
 function App() {
 
-  const canvasRef = useRef(null);
+  const canvasRef = useRef(new Array());
   const [isWon, setWon] = useState(false);
   const [isLost, setLost] = useState(false);
   const [isModalOpen, SetModalOpen] = useState(false);
