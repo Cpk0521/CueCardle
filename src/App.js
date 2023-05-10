@@ -55,7 +55,7 @@ function App() {
 
   useEffect(()=>{
     Hello();
-    initCanvas(canvasRef, guesses.length)
+    initCanvas(canvasRef, guesses)
   },[])
 
   // useEffect(()=>{

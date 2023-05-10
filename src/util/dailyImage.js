@@ -59,8 +59,8 @@ export const isCorrect = (currguses) => {
     return {correct:correct, almost:almost, skip:skip}
 }
 
-export const initCanvas = async (canvasRef, times) => {
-    const allcanvas = canvasRef.current;
+export const initCanvas = async (canvasRef, guesses) => {
+    const allcanvas = canvasRef.current;    
     const image = dailyImage ?? await getDailyImage()
     let clipsize = clipStyle.clipSize
     let setid = (today.day * today.month * today.year) % clipStyle.area.length
@@ -71,9 +71,12 @@ export const initCanvas = async (canvasRef, times) => {
         ctx.fillStyle = "#cccccc";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        if(index <= times){
-            let {x, y} = area[index]
-            ctx.drawImage(image, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
+        if(index <= guesses.length){
+            let record = guesses[index - 1] || {}
+            if(!record['correct']){
+                let {x, y} = area[index]
+                ctx.drawImage(image, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
+            }
         }
     });
 }
