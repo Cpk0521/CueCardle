@@ -19,11 +19,11 @@ export default function TechModal({switchTechModal}) {
                         </div>
                         <div className="square-Tech-container">
                             <div className="square" id="error"></div>
-                            <p>キャラクターとカードタイトルの両方でも不正解です</p>
+                            <p>キャラクターとカード名の両方も不正解です</p>
                         </div>
                         <div className="square-Tech-container">
                             <div className="square" id="almost"></div>
-                            <p>キャラクターは正解ですが、カードタイトルは不正解です</p>
+                            <p>キャラクターは正解ですが、カード名は不正解です</p>
                         </div>
                         <div className="square-Tech-container">
                             <div className="square" id="correct"></div>

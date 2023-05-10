@@ -7,7 +7,7 @@ import Modal from './components/Modal'
 import StatsModal from './components/StatsModal'
 import TechModal from "./components/TechModal";
 
-import {clipImage, isCorrect, isToday, Today} from './util/dailyImage'
+import { initCanvas ,updateCanvas, isCorrect, isToday, Today} from './util/dailyImage'
 import Hello from './util/Hello'
 import {CopyToClipBoard, TweetShare} from './util/Share'
 import {setStatusToLocal, getStatusFromLocal, setTodayToLocal, setFirst, getFirst} from './util/Storage'
@@ -55,11 +55,13 @@ function App() {
 
   useEffect(()=>{
     Hello();
+    initCanvas(canvasRef, guesses.length)
   },[])
 
-  useEffect(()=>{
-    clipImage(canvasRef, guesses.length);
-  },[canvasRef, guesses])
+  // useEffect(()=>{
+  //   initCanvas(canvasRef, guesses.length)
+  //   // clipImage(canvasRef, guesses.length);
+  // },[canvasRef, guesses])
 
   useEffect(()=>{
     setStatusToLocal(guesses, {Won:isWon, Lost:isLost});
@@ -74,17 +76,18 @@ function App() {
 
     if(isWon || isLost){return SetModalOpen(true)}
 
-    let staute = isCorrect(currguess);
+    let status = isCorrect(currguess);
 
     setGuesses((prev)=>{
-      return [...prev, staute];
+      return [...prev, status];
     })
 
-    if(staute.correct){
+    if(status.correct){
       setStats(addStatistics(stats, guesses.length));
       return setWon(true);
     }else{
-      clipImage(canvasRef, guesses.length + 1);
+      // clipImage(canvasRef, guesses.length + 1);
+      updateCanvas(canvasRef, guesses.length + 1);
     }
 
     if(guesses.length + 1 >= 6){

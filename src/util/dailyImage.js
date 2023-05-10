@@ -30,7 +30,7 @@ export const getIndexByDay = () => {
 
     const index = Math.floor((today.valueOf() - start.valueOf()) / DayOfms);
 
-    console.log(List.length)
+    // console.log(List.length) //399
     const image = List[index % List.length];
 
     return {Listindex:index, CardData:image, today:now, nextday:nextday};
@@ -38,16 +38,18 @@ export const getIndexByDay = () => {
 
 export const {Listindex, CardData, today, nextday} = getIndexByDay();
 
+let dailyImage 
 export const getDailyImage = () => {
 
     return new Promise((resolve, reject) => {
-        let dailyImage = new Image();
+        dailyImage = new Image();
         dailyImage.src = `https://cpk0521.github.io/CUECardsViewer/Cards/${CardData.cardId}/Card_${CardData.cardId}_${CardData.Blooming?'2':'1'}_b.png`;
 
         dailyImage.onload = () => resolve(dailyImage)
         dailyImage.onerror = (e) => reject(e);
     })
 }
+
 
 export const isCorrect = (currguses) => {
     let skip = currguses.Skip === true;
@@ -57,20 +59,9 @@ export const isCorrect = (currguses) => {
     return {correct:correct, almost:almost, skip:skip}
 }
 
-export const initCanvas = async (canvasRef) => {
+export const initCanvas = async (canvasRef, times) => {
     const allcanvas = canvasRef.current;
-    allcanvas.forEach((canvas)=>{
-        let ctx = canvas.getContext('2d');
-        ctx.fillStyle = "#cccccc";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    })
-}
-
-export const clipImage = async (canvasRef, times) => {
-    
-    // season 2
-    const allcanvas = canvasRef.current;
-    const image = await getDailyImage()
+    const image = dailyImage ?? await getDailyImage()
     let clipsize = clipStyle.clipSize
     let setid = (today.day * today.month * today.year) % clipStyle.area.length
     let area = clipStyle.area[setid]
@@ -85,17 +76,30 @@ export const clipImage = async (canvasRef, times) => {
             ctx.drawImage(image, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
         }
     });
-
-    // season 1
-    // let clipsize = 300
-    // canvas.width = clipsize;
-    // canvas.height = clipsize;
-
-    // let sPx = (today.day * today.month * today.year) % (image.width - image.height * .52);
-    // let sPy = (today.day * today.year) % (image.height - image.height * .52);
-
-    // let size = image.height * (.1 + (.07*times));
-
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // ctx.drawImage(image, sPx, sPy, size, size, 0, 0, canvas.width, canvas.width);
 }
+
+export const updateCanvas = async  (canvasRef, times) => {
+    if ( times >= 6 ) { return }
+
+    const canvas = canvasRef.current[times];
+    const image = dailyImage ?? await getDailyImage()
+    let clipsize = clipStyle.clipSize
+    let setid = (today.day * today.month * today.year) % clipStyle.area.length
+    let area = clipStyle.area[setid]
+
+    let ctx = canvas.getContext('2d');
+    let {x, y} = area[times]
+    ctx.drawImage(image, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
+}
+
+// season 1
+// export const clipImage = async (canvasRef, times) => {
+//     let clipsize = 300
+//     canvas.width = clipsize;
+//     canvas.height = clipsize;
+//     let sPx = (today.day * today.month * today.year) % (image.width - image.height * .52);
+//     let sPy = (today.day * today.year) % (image.height - image.height * .52);
+//     let size = image.height * (.1 + (.07*times));
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     ctx.drawImage(image, sPx, sPy, size, size, 0, 0, canvas.width, canvas.width);
+// }
