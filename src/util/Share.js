@@ -19,6 +19,6 @@ export const TweetShare = (guesses, isWon, isLost) => {
     window.open(`https://twitter.com/intent/tweet?text=${ShareText}`, "_blank")
 }
 
-//CUE!Cardle Season 2 #index x/6
+//CUE!Cardle S2 #index x/6
 //🔲🔳⬜🟨🟩
-//github link
+//https://cpk0521.github.io/CueCardle/

@@ -2,7 +2,6 @@ const statusKey = 'gameStatus';
 const inheritedGameStatKey = 'statistics';
 const DateKey = 'Date';
 const FirstTimeKey = 'FirstTime';
-// const FirstTime_s2_Key = 'FirstTime_s2';
 
 export const setStatusToLocal = (guesses, isGameover) => {
     localStorage.setItem(statusKey, JSON.stringify({guesses:guesses, isGameover:isGameover}));
