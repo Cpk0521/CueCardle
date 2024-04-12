@@ -315,12 +315,12 @@ nav > h1 {
     background: rgb(106, 170, 100, .8);
 }
 
-.tweet {
-    background: #1DA1F2!important;
+.xtweet {
+    background: #183153!important;
 }
 
-.tweet:hover {
-    background: rgb(29, 161, 242, .8)!important;
+.xtweet:hover {
+    background: rgb(14, 49, 83, .8)!important;
 }
 
 .toaster {

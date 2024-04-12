@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {Cards} from '../List/CardsList'
-import {Charactor} from '../List/Charactor'
+import Cards from '../List/CardsList'
+import Charactor from '../List/Charactor'
 import Toaster from './Toaster'
 
 import '../App.css'

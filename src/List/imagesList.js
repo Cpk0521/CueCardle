@@ -1,4 +1,4 @@
-export const List = [
+export default [
     {
         "cardId": 4110012,
         "heroineId": 11,

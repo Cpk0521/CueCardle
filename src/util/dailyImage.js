@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import {List} from '../List/imagesList'
+import List from '../List/imagesList'
 import {getDateFromLocal} from './Storage'
 import { clipStyle } from '../List/ClipStyle'
 
