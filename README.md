@@ -1,6 +1,7 @@
-# CUE!Cardle
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="assets/cover.png" alt="WDS">
+  <hr>
+</div>
 
 ## Domo
 
