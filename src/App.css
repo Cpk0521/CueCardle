@@ -135,11 +135,13 @@ nav > h1 {
     padding: 5px 0;
     width: 100%;
     font-size: medium;
-    border: 1px solid rgb(43 117 255);
+    /* border: 1px solid rgb(43 117 255); */
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .selectlist > select:active{
-    border: 1px solid rgb(43 117 255);
+    /* border: 1px solid rgb(43 117 255); */
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .submitlist {
@@ -149,22 +151,25 @@ nav > h1 {
 .submitlist > button {
     width: 45%;
     background: #FFF;
-    border: 1px solid rgb(43 117 255);
+    /* border: 1px solid rgb(43 117 255); */
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
     font-size: large;
-    box-shadow: 0 2px 2px rgb(43 117 255 / 80%);
+    /* box-shadow: 0 2px 2px rgb(43 117 255 / 80%); */
+    box-shadow: 0 2px 2px rgb(0, 0, 0 / 80%);
     padding: 10px 0;
 }
 
 .submitlist > button:active{
-    background: rgb(43 117 255);
+    /* background: rgb(43 117 255); */
+    background: rgb(0, 0, 0);
     color: #FFF;
 }
 
-.Sakura {
+/* .Sakura {
     background: rgb(43 117 255)!important;
     color: #FFF!important;
-}
+} */
 
 #skip {
     outline: 1px solid #d3d6da!important;

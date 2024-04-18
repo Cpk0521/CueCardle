@@ -4,7 +4,7 @@
   <img src="public/bg.png" alt="Cover">
 </div>
 
-## Domo
+## Demo
 
 [https://cpk0521.github.io/CueCardle/](https://cpk0521.github.io/CueCardle/)
 
