@@ -1,5 +1,8 @@
+# CUE!Cardle
+
+## 
 <div align="center">
-  <img src="assets/cover.png" alt="WDS">
+  <img src="public/bg.png" alt="Cover">
   <hr>
 </div>
 
