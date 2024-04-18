@@ -1,4 +1,4 @@
-export const Cards = [
+export default [
     {
         "cardId": 1010001,
         "heroineId": 1,

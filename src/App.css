@@ -76,15 +76,11 @@ nav > h1 {
 }
 
 .imageBox {
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 8px;
+    justify-content: center;
     overflow: hidden;
-    /* min-height: 300px; */
+    min-height: 300px;
 }
 
 .imageCanvas {
@@ -319,14 +315,6 @@ nav > h1 {
 .sharebtn:hover {
     background: rgb(106, 170, 100, .8);
 }
-
-/* .tweet {
-    background: #1DA1F2!important;
-}
-
-.tweet:hover {
-    background: rgb(29, 161, 242, .8)!important;
-} */
 
 .xtweet {
     background: #183153!important;

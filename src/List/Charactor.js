@@ -1,4 +1,4 @@
-export const Charactor = [
+export default [
     {
         "id": 1,
         "Name": "六石陽菜"
