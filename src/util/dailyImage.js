@@ -28,10 +28,12 @@ export const getIndexByDay = () => {
     const nextday = today.plus({days: 1}).minus({minutes: now.offset}).valueOf();
 
     const index = Math.floor((today.valueOf() - start.valueOf()) / DayOfms);
-
-    // console.log(List.length) //399
-    console.log(`index : ${index % List.length} / ${List.length}`);
-    const image = List[index % List.length];
+    
+    //s1: 399, s2: 340, 
+    const oldVersionTotal = 739;
+    
+    console.log(`index : ${index - oldVersionTotal} / ${List.length}`);
+    const image = List[(index - oldVersionTotal) % List.length];
 
     return {Listindex:index, CardData:image, today:now, nextday:nextday};
 }
