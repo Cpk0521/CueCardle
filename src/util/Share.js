@@ -19,6 +19,12 @@ export const TweetShare = (guesses, isWon, isLost) => {
     window.open(`https://twitter.com/intent/tweet?text=${ShareText}`, "_blank")
 }
 
+export const BlueskyShare = (guesses, isWon, isLost) => {
+    let ShareText = encodeURIComponent(`CUE!Cardle³ #${Listindex + 1} ${isWon?guesses.length:isLost?'X':''}/6\n${generateEmojiTile(guesses)}\nhttps://cpk0521.github.io/CueCardle/\n#キュー #新人声優育成中 #写真が下手ですみません`)
+    window.open(`https://bsky.app/intent/compose?text=${ShareText}`, "_blank")
+}
+
 //CUE!Cardle³ #index x/6
 //🔲🔳⬜🟨🟩
 //https://cpk0521.github.io/CueCardle/
+

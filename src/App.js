@@ -9,7 +9,7 @@ import TechModal from "./components/TechModal";
 
 import { initCanvas ,updateCanvas, isCorrect, isToday, Today} from './util/dailyImage'
 import Hello from './util/Hello'
-import {CopyToClipBoard, TweetShare} from './util/Share'
+import {CopyToClipBoard, TweetShare, BlueskyShare} from './util/Share'
 import {setStatusToLocal, getStatusFromLocal, setTodayToLocal, setFirst, getFirst} from './util/Storage'
 import {addStatistics, loadStatistics} from './util/Statistics'
 
@@ -120,10 +120,14 @@ function App() {
     TweetShare(guesses, isWon, isLost);
   }
 
+  const OnBlueskyShare = () => {
+    BlueskyShare(guesses, isWon, isLost);
+  }
+
   return (
     <>
       {isTechModalOpen?<TechModal switchTechModal={switchTechModal}/>:<></>}
-      {isModalOpen?<Modal closeModal={closeModal} OnTextShare={OnTextShare} OnTweetShare={OnTweetShare}/>:<></>}
+      {isModalOpen?<Modal closeModal={closeModal} OnTextShare={OnTextShare} OnTweetShare={OnTweetShare} OnBlueskyShare={OnBlueskyShare}/>:<></>}
       {isStatsModalOpen?<StatsModal switchStatsModal={switchStatsModal} stats={stats} />:<></>}
       <div className="App">
         <nav>

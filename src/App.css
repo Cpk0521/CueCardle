@@ -285,7 +285,7 @@ nav > h1 {
     padding: 10px 0;
     width: 95%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     justify-items: center;
 }
@@ -322,6 +322,14 @@ nav > h1 {
 
 .xtweet:hover {
     background: rgb(14, 49, 83, .8)!important;
+}
+
+.bsky {
+    background: #64c0fc!important;
+}
+
+.bsky:hover {
+    background: rgb(100, 192, 252, .8)!important;
 }
 
 .toaster {
@@ -485,5 +493,9 @@ nav > h1 {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         margin: 8px 16px ;
+    }
+
+    .btnlist {
+        grid-template-columns: 1fr;
     }
 }
