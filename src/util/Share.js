@@ -20,6 +20,11 @@ export const TweetShare = (guesses, isWon, isLost) => {
 }
 
 export const BlueskyShare = (guesses, isWon, isLost) => {
+    let ShareText = encodeURIComponent(`CUE!Cardle³ #${Listindex + 1} ${isWon?guesses.length:isLost?'X':''}/6\n${generateEmojiTile(guesses)}\n\n#キュー #新人声優育成中 #写真が下手ですみません\nhttps://cpk0521.github.io/CueCardle/\n`)
+    window.open(`https://bsky.app/intent/compose?text=${ShareText}`, "_blank")
+}
+
+export const MisskeyShare = (guesses, isWon, isLost) => {
     let ShareText = encodeURIComponent(`CUE!Cardle³ #${Listindex + 1} ${isWon?guesses.length:isLost?'X':''}/6\n${generateEmojiTile(guesses)}\n#キュー #新人声優育成中 #写真が下手ですみません\n`)
     window.open(`https://misskey-hub.net/share/?text=${ShareText}&url=https://cpk0521.github.io/CueCardle/&visibility=public&localOnly=0`, "_blank")
 }
