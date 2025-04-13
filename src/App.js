@@ -58,11 +58,6 @@ function App() {
     initCanvas(canvasRef, guesses)
   },[])
 
-  // useEffect(()=>{
-  //   initCanvas(canvasRef, guesses.length)
-  //   // clipImage(canvasRef, guesses.length);
-  // },[canvasRef, guesses])
-
   useEffect(()=>{
     setStatusToLocal(guesses, {Won:isWon, Lost:isLost});
   },[guesses, isWon, isLost])
@@ -86,7 +81,6 @@ function App() {
       setStats(addStatistics(stats, guesses.length));
       return setWon(true);
     }else{
-      // clipImage(canvasRef, guesses.length + 1);
       updateCanvas(canvasRef, guesses.length + 1);
     }
 
@@ -138,7 +132,7 @@ function App() {
               </svg>
             </a>
           </div>
-          <h1>CUE!Cardle³</h1>
+          <h1>CUE!Cardle⁴</h1>
           <div className="nav-right">
           <button onClick={switchTechModal}>
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>

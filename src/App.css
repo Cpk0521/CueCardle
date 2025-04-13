@@ -75,13 +75,22 @@ nav > h1 {
     padding: 10px;
 }
 
-.imageBox {
+.imageBox-full {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     min-height: 300px;
 }
+
+.imageBox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 8px;
+    overflow: hidden;
+}
+
 
 .imageCanvas {
     max-width: 100%; 
@@ -489,7 +498,7 @@ nav > h1 {
         width: auto;
     }
 
-    .imageBox{
+    .imageBox-full, .imageBox-grid{
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         margin: 8px 16px ;
