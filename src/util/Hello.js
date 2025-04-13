@@ -1,3 +1,5 @@
+const clog = console.log;
+
 export default function Hello() {
     
     let log = [
@@ -9,5 +11,5 @@ export default function Hello() {
         'background: #00ffff; padding:5px 0;',
     ]
     
-    console.log(...log);
+    clog(...log);
 }
