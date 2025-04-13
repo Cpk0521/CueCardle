@@ -24,15 +24,14 @@ export const getIndexByDay = () => {
 
     const now = Today().datetime;
 
-    // const start = DateTime.utc(2022, 4, 11);
-    const start = DateTime.utc(2022, 4, 1);
+    const start = DateTime.utc(2022, 4, 11);
     const today = DateTime.utc(now.year, now.month, now.day);
     const nextday = today.plus({days: 1}).minus({minutes: now.offset}).valueOf();
 
     const index = Math.floor((today.valueOf() - start.valueOf()) / DayOfms);
     
-    //s1: 399, s2: 340, s3 : 
-    const oldVersionTotal = 739;
+    //s1: 399, s2: 340, s3 : 360 
+    const oldVersionTotal = 1099;
     
     console.log(`index : ${index - oldVersionTotal} / ${List.length}`);
     const image = List[(index - oldVersionTotal) % List.length];
@@ -63,10 +62,10 @@ export const getImage = () => {
 
 export const initCanvas = async (canvasRef, guesses) => {
     const allcanvas = canvasRef.current;    
-    const image = dailyImage ?? await getImage()
+    const image = dailyImage ?? await getImage();
     let clipsize = clipStyle.clipSize
-    let setid = (today.day * today.month * today.year) % clipStyle.area.length
-    let area = clipStyle.area[setid]
+    let setid = (today.day * today.month * today.year) % clipStyle.area.length;
+    let area = clipStyle.area[setid];
 
     pixelate(image, 15, guesses.length, (tempcanvas)=>{
         allcanvas.forEach((canvas, index) => {
@@ -77,13 +76,12 @@ export const initCanvas = async (canvasRef, guesses) => {
             if(index <= guesses.length){
                 let record = guesses[index - 1] || {}
                 if(!record['correct']){
-                    let {x, y} = area[index]
+                    let {x, y} = area[index];
                     ctx.drawImage(tempcanvas, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
                 }
             }
         });
     });
-
 
 }
 
@@ -92,15 +90,15 @@ export const updateCanvas = async (canvasRef, times) => {
 
     const allcanvas = canvasRef.current;    
     const image = dailyImage;
-    let clipsize = clipStyle.clipSize
-    let setid = (today.day * today.month * today.year) % clipStyle.area.length
-    let area = clipStyle.area[setid]
+    let clipsize = clipStyle.clipSize;
+    let setid = (today.day * today.month * today.year) % clipStyle.area.length;
+    let area = clipStyle.area[setid];
 
     pixelate(image, 15, times, (tempcanvas)=>{
         allcanvas.forEach((canvas, index) => {
             let ctx = canvas.getContext('2d');
             if(index <= times){
-                let {x, y} = area[index]
+                let {x, y} = area[index];
                 ctx.drawImage(tempcanvas, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
             }
         });
