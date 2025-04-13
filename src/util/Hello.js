@@ -3,7 +3,7 @@ const clog = console.log;
 export default function Hello() {
     
     let log = [
-        `\n\n %c  %c   CUE!Cardle v3.0   %c  %c  https://github.com/Cpk0521  %c \n\n`,
+        `\n\n %c  %c   CUE!Cardle v4.0   %c  %c  https://github.com/Cpk0521  %c \n\n`,
         'background: #00ffff; padding:5px 0;',
         'color: #00ffff; background: #030307; padding:5px 0;',
         'background: #00ffff; padding:5px 0;',
