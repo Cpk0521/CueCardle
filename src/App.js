@@ -58,11 +58,6 @@ function App() {
     initCanvas(canvasRef, guesses)
   },[])
 
-  // useEffect(()=>{
-  //   initCanvas(canvasRef, guesses.length)
-  //   // clipImage(canvasRef, guesses.length);
-  // },[canvasRef, guesses])
-
   useEffect(()=>{
     setStatusToLocal(guesses, {Won:isWon, Lost:isLost});
   },[guesses, isWon, isLost])
@@ -86,7 +81,6 @@ function App() {
       setStats(addStatistics(stats, guesses.length));
       return setWon(true);
     }else{
-      // clipImage(canvasRef, guesses.length + 1);
       updateCanvas(canvasRef, guesses.length + 1);
     }
 
