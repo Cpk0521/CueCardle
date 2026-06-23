@@ -8,9 +8,9 @@ export default function TechModal({switchTechModal}) {
                     <h2>遊び方</h2>
                     <span>©Liber Entertainment Inc.</span>
                     <div className="Tech-container">
-                        <p>画像を観察して、その日のキャラクターとカード名を6回の試行で当てよう。</p>
-                        <p>答えが間違っている場合やスキップした場合、画像が1つ追加されます。</p>
-                        <p>ぜひ答えてみて、あなたの回答をシェアてしましょう。</p>
+                        <p>画像をヒントに、その日のキャラクターとカード名を6回以内に当てよう。</p>
+                        <p>答えが間違っている場合やスキップした場合は、画像が1枚追加されます。</p>
+                        <p>ぜひ挑戦して、あなたの結果をシェアしましょう！</p>
                     </div>
                     <div className="square-container">
                         <div className="square-Tech-container">

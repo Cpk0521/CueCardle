@@ -85,17 +85,20 @@ nav > h1 {
 
 .imageBox-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    grid-template-columns: repeat(6, 1fr);
+    /* grid-template-rows: 1fr 1fr; */
+    grid-template-rows: 1fr;
+    justify-items: center;
     grid-gap: 8px;
     overflow: hidden;
 }
-
 
 .imageCanvas {
     max-width: 100%; 
     max-height: 100%;
     border-radius: 5px;
+    max-height: 300px;
 }
 
 .resultBoard {
@@ -499,8 +502,10 @@ nav > h1 {
     }
 
     .imageBox-full, .imageBox-grid{
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: repeat(6, 1fr);
+        /* grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr; */
+        grid-template-rows: 1fr;
         margin: 8px 16px ;
     }
 

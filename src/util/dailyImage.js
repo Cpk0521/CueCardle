@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import List from '../List/imagesList';
 import {getDateFromLocal} from './Storage';
-import { clipStyle } from '../List/ClipStyle';
+// import { clipStyle } from '../List/ClipStyle';
 
 export const Today = () => {
     const timezone = 'Asia/Tokyo';
@@ -30,11 +30,11 @@ export const getIndexByDay = () => {
 
     const index = Math.floor((today.valueOf() - start.valueOf()) / DayOfms);
     
-    //s1: 399, s2: 340, s3 : 360 
-    const oldVersionTotal = 1099;
+    //s1: 399, s2: 340, s3 : 360, s4 : 437, s5 : 
+    const oldVersionTotal = 1535;
     
-    console.log(`index : ${index - oldVersionTotal} / ${List.length}`);
-    const image = List[(index - oldVersionTotal) % List.length];
+    console.log(`index : ${index - oldVersionTotal + 1} / ${List.length}`);
+    const image = List[(index - oldVersionTotal ) % List.length];
 
     return {Listindex:index, CardData:image, today:now, nextday:nextday};
 }
@@ -50,6 +50,7 @@ export const isCorrect = (currguses) => {
 }
 
 let dailyImage = null;
+let clipXllist = [36, 237, 438, 639, 840, 1041];
 export const getImage = () => {
     return new Promise((resolve, reject) => {
         dailyImage = new Image();
@@ -63,21 +64,27 @@ export const getImage = () => {
 export const initCanvas = async (canvasRef, guesses) => {
     const allcanvas = canvasRef.current;    
     const image = dailyImage ?? await getImage();
-    let clipsize = clipStyle.clipSize
-    let setid = (today.day * today.month * today.year) % clipStyle.area.length;
-    let area = clipStyle.area[setid];
-
-    pixelate(image, 15, guesses.length, (tempcanvas)=>{
+    // let clipsize = clipStyle.clipSize
+    // let setid = (today.day * today.month * today.year) % clipStyle.area.length;
+    // let area = clipStyle.area[setid];
+    
+    pixelate(image, 10 + guesses.length, guesses.length, (tempcanvas)=>{
         allcanvas.forEach((canvas, index) => {
             let ctx = canvas.getContext('2d');
             ctx.fillStyle = "#cccccc";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             if(index <= guesses.length){
                 let record = guesses[index - 1] || {}
                 if(!record['correct']){
-                    let {x, y} = area[index];
-                    ctx.drawImage(tempcanvas, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
+                    // let {x, y} = area[index];
+                    ctx.save();
+                    if(index % 2 === 0){
+                        ctx.translate(canvas.width, 0);
+                        ctx.scale(-1, 1);
+                    }
+                    ctx.drawImage(tempcanvas, clipXllist[(Listindex + index) % clipXllist.length], 0, 150, 750, 0, 0, canvas.width, canvas.height);
+                    ctx.restore();
                 }
             }
         });
@@ -90,16 +97,23 @@ export const updateCanvas = async (canvasRef, times) => {
 
     const allcanvas = canvasRef.current;    
     const image = dailyImage;
-    let clipsize = clipStyle.clipSize;
-    let setid = (today.day * today.month * today.year) % clipStyle.area.length;
-    let area = clipStyle.area[setid];
-
-    pixelate(image, 15, times, (tempcanvas)=>{
+    
+    // let clipsize = clipStyle.clipSize;
+    // let setid = (today.day * today.month * today.year) % clipStyle.area.length;
+    // let area = clipStyle.area[setid];
+    pixelate(image, 10 + times, times, (tempcanvas)=>{
         allcanvas.forEach((canvas, index) => {
             let ctx = canvas.getContext('2d');
             if(index <= times){
-                let {x, y} = area[index];
-                ctx.drawImage(tempcanvas, x, y, clipsize, clipsize, 0, 0, canvas.width, canvas.width);
+                // let {x, y} = area[index];
+                ctx.save();
+                if(index % 2 === 0){
+                    ctx.translate(canvas.width, 0);
+                    ctx.scale(-1, 1);
+                    console.log('flipped');
+                }
+                ctx.drawImage(tempcanvas, clipXllist[(Listindex + index) % clipXllist.length], 0, 150, 750, 0, 0, canvas.width, canvas.height);
+                ctx.restore();
             }
         });
     })
@@ -152,10 +166,9 @@ function pixelate(image, scale, times, func){
             imgPixels.height
         );
     }
-
     // document.body.appendChild(canvas);
 
     func(canvas);
-
+    
     canvas.remove();
 }
